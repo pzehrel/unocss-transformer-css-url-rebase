@@ -1,7 +1,3 @@
-<p align="center">
-<img src="logo" alt='logo' style="width:100px;" />
-</p>
-
 <h1 align="center">unocss-transformer-css-url-rebase</h1>
 
 <p align="center">A Unocss transformer that converts relative paths in 'url(...)' to absolute paths based on the project root, allowing Vite to recognize and handle these assets.</p>
