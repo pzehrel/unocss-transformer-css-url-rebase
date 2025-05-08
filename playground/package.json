@@ -15,7 +15,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "typescript": "^5.8.2",
     "unocss": "^66.0.0",
-    "unocss-transformer-starter": "workspace:*",
+    "unocss-transformer-css-url-rebase": "workspace:*",
     "vite": "^6.2.1",
     "vue-tsc": "^2.2.8"
   }

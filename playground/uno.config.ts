@@ -1,14 +1,16 @@
 import {
   defineConfig,
-  presetUno,
+  presetMini,
 } from 'unocss'
-import transformerStarter from 'unocss-transformer-starter'
+import { transformerCssUrlRebase } from 'unocss-transformer-css-url-rebase'
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetMini(),
   ],
   transformers: [
-    transformerStarter(),
+    transformerCssUrlRebase({
+      root: __dirname,
+    }),
   ],
 })

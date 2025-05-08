@@ -1,26 +1,18 @@
-import type MagicString from 'magic-string'
-import type { SourceCodeTransformer, UnoGenerator } from 'unocss'
+import type { SourceCodeTransformer } from 'unocss'
+import type { TransformerCssUrlRebaseOptions } from './options'
+import { withTransformCssUrlRebase } from './transform'
 
-export interface TransformerStarterOptions {
-
-}
-
-export default function transformStarter(options?: TransformerStarterOptions): SourceCodeTransformer {
+export function transformerCssUrlRebase(options?: TransformerCssUrlRebaseOptions): SourceCodeTransformer {
   return {
-    name: 'unocss-transformer-starter',
+    name: 'unocss-transformer-css-url-rebase',
     enforce: 'pre',
-    async transform(code, _, { uno }) {
-      await transformStarterMain(code, uno, options)
+    transform(code, id, { root }) {
+      const highlightAnnotations = withTransformCssUrlRebase(code, id, undefined, Object.assign({ root }, options))
+      return { highlightAnnotations }
     },
   }
 }
 
-export async function transformStarterMain(
-  code: MagicString,
-  uno: UnoGenerator,
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  options: TransformerStarterOptions = {},
-) {
-  // Your logic here
-  code.replace('UnoCSS', 'UnoCSS is awesome')
-}
+export default transformerCssUrlRebase
+
+export { withTransformCssUrlRebase }

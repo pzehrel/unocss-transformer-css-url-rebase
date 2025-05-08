@@ -1,6 +1,4 @@
 <template>
-  <div>
-    <h1>Playground</h1>
-    <p>hello UnoCSS</p>
-  </div>
+  <div class="bg-[url(./assets/vite.png)] w-100px h-100px" />
+  <div class="bg-[url(assets/vite.png)] w-100px h-100px" />
 </template>

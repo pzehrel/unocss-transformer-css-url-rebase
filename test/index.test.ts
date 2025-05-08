@@ -1,24 +1,51 @@
-import type { UnoGenerator } from 'unocss'
 import MagicString from 'magic-string'
-import { createGenerator, presetWind3 } from 'unocss'
 import { expect, it } from 'vitest'
-import { transformStarterMain } from '../src'
+import { withTransformCssUrlRebase } from '../src/transform'
 
-async function createTransformer() {
-  const uno = await createGenerator({
-    presets: [presetWind3()],
-  })
-
-  return async (code: string, _uno: UnoGenerator = uno) => {
+function createTransformer() {
+  return (code: string, id: string, root?: string) => {
     const s = new MagicString(code)
-    await transformStarterMain(s, _uno, {})
+    withTransformCssUrlRebase(s, id, undefined, { root })
     return s.toString()
   }
 }
 
-it('basic', async () => {
-  const transform = await createTransformer()
-  const code = `hello UnoCSS`
+it('relative path should be transformed', async () => {
+  const code = `<div class="bg-[url(./assets/vite.png)]" />`
+  const root = '/apps/app'
+  const id = `${root}/src/App.vue`
 
-  expect(await transform(code)).toMatchInlineSnapshot(`"hello UnoCSS is awesome"`)
+  const transform = createTransformer()
+  const result = transform(code, id, root)
+  expect(result).toMatchInlineSnapshot(`"<div class="bg-[url(/src/assets/vite.png)]" />"`)
+})
+
+it('windows relative path should be transformed', async () => {
+  const code = `<div class="bg-[url(assets\\vite.png)]" />`
+  const root = 'C:\\Users\\user\\Desktop\\apps\\app'
+  const id = `${root}\\src\\App.vue`
+
+  const transform = createTransformer()
+  const result = transform(code, id, root)
+  expect(result).toMatchInlineSnapshot(`"<div class="bg-[url(/src/assets/vite.png)]" />"`)
+})
+
+it('absolute path should not be transformed', async () => {
+  const code = `<div class="bg-[url(/assets/vite.png)]" />`
+  const root = '/apps/app'
+  const id = `${root}/src/App.vue`
+
+  const transform = createTransformer()
+  const result = transform(code, id, root)
+  expect(result).toMatchInlineSnapshot(`"<div class="bg-[url(/assets/vite.png)]" />"`)
+})
+
+it('http url should not be transformed', async () => {
+  const code = `<div class="bg-[url(https://vite.dev/logo.svg)]" />`
+  const root = '/apps/app'
+  const id = `${root}/src/App.vue`
+
+  const transform = createTransformer()
+  const result = transform(code, id, root)
+  expect(result).toMatchInlineSnapshot(`"<div class="bg-[url(https://vite.dev/logo.svg)]" />"`)
 })
