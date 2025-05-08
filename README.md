@@ -3,20 +3,17 @@
 <p align="center">A Unocss transformer that converts relative paths in 'url(...)' to absolute paths based on the project root, allowing Vite to recognize and handle these assets.</p>
 
 <p align="center">
-<a>
+<a href="https://www.npmjs.com/package/unocss-transformer-css-url-rebase">
 <img src="https://img.shields.io/npm/v/unocss-transformer-css-url-rebase?style=flat&colorA=080f12&colorB=1fa669" alt="npm version" />
 </a>
-<a>
+<a href="https://www.npmjs.com/package/unocss-transformer-css-url-rebase">
 <img src="https://img.shields.io/npm/dm/unocss-transformer-css-url-rebase?style=flat&colorA=080f12&colorB=1fa669" alt="npm downloads" />
-</a>
-<a>
-<img src="https://img.shields.io/github/license/unocss-community/unocss-transformer-css-url-rebase.svg?style=flat&colorA=080f12&colorB=1fa669" alt="License" />
 </a>
 </p>
 
 ## Install
 ```shell
-pnpm i -D unocss-transformer-starter
+pnpm i -D unocss-transformer-css-url-rebase
 ```
 
 ```ts
