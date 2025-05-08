@@ -1,5 +1,5 @@
+import type { HighlightAnnotation } from '@unocss/core'
 import type MagicString from 'magic-string'
-import type { HighlightAnnotation } from 'unocss/index'
 import type { TransformerCssUrlRebaseOptions } from './options'
 import { dirname, isAbsolute, join, normalize } from 'pathe'
 

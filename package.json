@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "packageManager": "pnpm@10.10.0",
   "description": "A Unocss transformer that converts relative paths in 'url(...)' to absolute paths based on the project root, allowing Vite to recognize and handle these assets.",
+  "author": {
+    "name": "pzehrel",
+    "email": "pzehrel@gmail.com"
+  },
   "license": "MIT",
   "homepage": "https://github.com/unocss-community/unocss-transformer-css-url-rebase#readme",
   "repository": {
@@ -53,21 +57,21 @@
     "typecheck": "tsc --noEmit",
     "play": "npm -C playground run dev"
   },
+  "peerDependencies": {
+    "@unocss/core": ">=65"
+  },
   "dependencies": {
     "pathe": "^2.0.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.8.1",
-    "@babel/types": "^7.26.10",
     "@types/node": "^22.13.10",
+    "@unocss/core": "^66.0.0",
     "bumpp": "^10.0.3",
     "eslint": "^9.22.0",
-    "esno": "^4.8.0",
     "magic-string": "^0.30.17",
     "typescript": "^5.8.2",
     "unbuild": "^3.5.0",
-    "unocss": "^66.0.0",
-    "vite": "^6.2.1",
     "vitest": "^3.0.8"
   }
 }
