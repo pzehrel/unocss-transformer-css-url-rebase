@@ -5,13 +5,13 @@
   "packageManager": "pnpm@10.10.0",
   "description": "A Unocss transformer that converts relative paths in 'url(...)' to absolute paths based on the project root, allowing Vite to recognize and handle these assets.",
   "license": "MIT",
-  "homepage": "https://github.com/pzehrel/unocss-transformer-css-url-rebase#readme",
+  "homepage": "https://github.com/unocss-community/unocss-transformer-css-url-rebase#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pzehrel/unocss-transformer-css-url-rebase.git"
+    "url": "git+https://github.com/unocss-community/unocss-transformer-css-url-rebase.git"
   },
   "bugs": {
-    "url": "https://github.com/pzehrel/unocss-transformer-css-url-rebase/issues"
+    "url": "https://github.com/unocss-community/unocss-transformer-css-url-rebase/issues"
   },
   "keywords": [
     "unpreset",
